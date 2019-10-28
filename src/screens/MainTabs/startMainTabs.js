@@ -3,7 +3,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 const startMainTabs = () => {
     Promise.all([
-        Icon.getImageSource("ios-menu", 30),
+        Icon.getImageSource("ios-menu", 30, '#FAC858'),
     ]).then(([menuIcon]) => {
         Navigation.setRoot({
             root: {
