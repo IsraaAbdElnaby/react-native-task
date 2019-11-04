@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Button, TextInput, StyleSheet, ImageBackground, Image } from 'react-native';
 import startMainTabs from '../MainTabs/startMainTabs';
+import CustomButton from '../../UI/CustomButton';
 import backgroundImage from '../../assets/Home-repair.png';
 import logo from '../../assets/Logo.png';
 import validate from '../../utility/validation';
@@ -41,7 +42,7 @@ class Auth extends Component {
                         valid: validate(value, prevState.controls[key].validationRules),
                         touched: true
                     },
-                    
+
                 }
             };
         });
@@ -50,7 +51,7 @@ class Auth extends Component {
         return (
             <ImageBackground source={backgroundImage} style={styles.backgroundImage}>
                 <View style={styles.container}>
-                    <Image source={logo}/>
+                    <Image style={{width: 150}} source={logo} />
                     <View style={styles.inputContainer}>
                         <TextInput
                             placeholder="البريد الالكتروني"
@@ -68,15 +69,15 @@ class Auth extends Component {
                             value={this.state.controls.password.value}
                             onChangeText={(val) => this.inputState('password', val)} />
                     </View>
-                    <View style={[styles.button,
-                                  (!this.state.controls.email.valid ||
-                                   !this.state.controls.password.valid) ? styles.disabled : null]}>
-                        <Button title="تسجيل الدخول"
-                            onPress={this.loginHandler}
+                    <CustomButton
+                        color="#FAC858"
+                        onPress={this.loginHandler}
+                        disabled={!this.state.controls.email.valid ||
+                            !this.state.controls.password.valid }>
+                        تسجيل الدخول
+                    </CustomButton>
 
-                        />
-                    </View>
-                    <Text style = {{fontWeight: "bold",color: "#848484"}}>لديك حساب - تسجيل الدخول</Text>
+                    <Text style={{ fontWeight: "bold", color: "#848484" }}>لديك حساب - تسجيل الدخول</Text>
                 </View>
             </ImageBackground>
         );
@@ -89,7 +90,6 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         backgroundColor: 'rgba(0,0,0,0.5)'
-
     },
     backgroundImage: {
         width: "100%",
@@ -106,19 +106,9 @@ const styles = StyleSheet.create({
         borderBottomColor: "#fff",
         borderBottomWidth: 1
     },
-    button: {
-        color: "#FAC858",
-        padding: 5,
-        width: "80%",
-        marginTop: 200
-    },
+
     invalid: {
         borderBottomColor: 'red'
-    },
-    disabled: {
-        
-        color: '#eee',
-        borderColor: '#eee'
     }
 })
 
