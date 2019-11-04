@@ -1,4 +1,5 @@
 const validate = (val, rules) => {
+    let isValid = true;
     for(let rule in rules) {
         switch(rule) {
             case 'isEmail':
