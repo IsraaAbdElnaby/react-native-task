@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, Dimensions, StyleSheet, TouchableOpacity, Button, ScrollView } from 'react-native';
 import Icon from "react-native-vector-icons/Ionicons";
 import MaterialIcon from "react-native-vector-icons/MaterialIcons";
+import CustomButton from '../../UI/CustomButton';
 
 class SideDrawer extends Component {
     render() {
@@ -75,12 +76,9 @@ class SideDrawer extends Component {
                             <Text>شارك التطبيق</Text>
                         </View>
                     </TouchableOpacity>
-                    <TouchableOpacity>
-                        <View
-                            style={styles.drawerItem}>
-                            <Button title="تسجيل الخروج" color="#FAC858" />
-                        </View>
-                    </TouchableOpacity>
+ 
+                    <CustomButton >تسجيل الخروج</CustomButton>
+
                 </ScrollView>
 
 

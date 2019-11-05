@@ -1,16 +1,22 @@
 import React from 'react';
-import {TouchableOpacity, Text, View, StyleSheet, Dimensions} from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
+import { TouchableOpacity, Text, View, StyleSheet, Dimensions } from 'react-native';
 
 const CustomButton = props => (
-    <TouchableOpacity onPress = {props.onPress}>
-        <View style={[
-            styles.button,
-            {backgroundColor: props.color},
-            props.disabled ? styles.disabled : null,
-            { width: Dimensions.get("window").width * 0.8 }
+    <TouchableOpacity onPress={props.onPress}>
+        <LinearGradient
+            start={{ x: 0.0, y: 1 }}
+            end={{ x: 1, y: 0.75 }}
+         
+            colors={props.disabled ?['#eee', '#e5e5d8']:['#F6813A', '#FAC858']}
+            style={[
+                styles.button,
+                { width: Dimensions.get("window").width * 0.8 }
             ]}>
-            <Text style={[{fontWeight: "bold"},styles.btnText,props.disabled ? null: styles.notDisabledTextColor]}>{props.children}</Text>
-        </View>
+
+            <Text style={[{ fontWeight: "bold" }, styles.btnText, props.disabled ? null : styles.notDisabledTextColor]}>{props.children}</Text>
+
+        </LinearGradient>
     </TouchableOpacity>
 );
 
@@ -26,13 +32,9 @@ const styles = StyleSheet.create({
         textAlign: "center",
         padding: 10
     },
-    disabled: {
-        backgroundColor: '#eee',
-        borderColor: '#eee',
-        width: "80%",
-    },
     notDisabledTextColor: {
-        color: "#fff"
+        color: "#fff",
+        
     }
 
 });

@@ -70,7 +70,6 @@ class Auth extends Component {
                             onChangeText={(val) => this.inputState('password', val)} />
                     </View>
                     <CustomButton
-                        color="#FAC858"
                         onPress={this.loginHandler}
                         disabled={!this.state.controls.email.valid ||
                             !this.state.controls.password.valid }>
