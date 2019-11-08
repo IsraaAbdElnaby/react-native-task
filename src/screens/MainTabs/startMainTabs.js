@@ -4,7 +4,9 @@ import Icon from 'react-native-vector-icons/Ionicons';
 const startMainTabs = () => {
     Promise.all([
         Icon.getImageSource("ios-menu", 30, '#FAC858'),
-    ]).then(([menuIcon]) => {
+        Icon.getImageSource('ios-contact', 30, '#FAC858'),
+        //  require('../../assets/Logo.png')
+    ]).then(([menuIcon, userIcon, logo]) => {
         Navigation.setRoot({
             root: {
                 sideMenu: {
@@ -17,19 +19,41 @@ const startMainTabs = () => {
                         stack: {
                             children: [{
                                 component: {
-                                    name: 'task.HomeScreen'
+                                    name: 'task.HomeScreen',
+                                    // options: {
+                                    //     topBar: {
+                                    //         title: {
+                                    //             component:{
+                                    //                 icon: logo,
+                                    //                 alignment: "center",
+                                                    
+                                    //             }
+                                           
+                                                
+                                    //             // color: '#FAC858'
+
+                                    //         }
+                                    //     }
+                                    // },
                                 },
+
                             }],
                             options: {
                                 topBar: {
+                                    background: {
+                                        color: '#000000',
+                                    },
+
                                     rightButtons: [
-                                        // {
-                                        //     text: 'كل الخدمات',
-                                        //     color: '#FAC858'
-                                        // },
+
                                         {
                                             id: 'sideMenu',
-                                            icon: menuIcon
+                                            icon: menuIcon,
+                                        }
+                                    ],
+                                    leftButtons: [
+                                        {
+                                            icon: userIcon
                                         }
                                     ]
                                 }
